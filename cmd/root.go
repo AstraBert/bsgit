@@ -39,6 +39,10 @@ var rootCmd = &cobra.Command{
 		if err != nil {
 			os.Exit(1)
 		}
+		err = GitBranchRename()
+		if err != nil {
+			os.Exit(1)
+		}
 		if err := os.WriteFile("README.md", []byte(readmeContent), 0644); err != nil {
 			fmt.Printf("\x1b[1;31mAn error occurred while writing README.md: %s", err.Error())
 			os.Exit(1)
