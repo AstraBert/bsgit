@@ -54,6 +54,11 @@ var rootCmd = &cobra.Command{
 			os.Exit(1)
 		}
 		fmt.Println("\x1b[1;92mLICENSE successfully written")
+		if err := os.WriteFile(".gitignore", make([]byte, 0), 0644); err != nil {
+			fmt.Printf("\x1b[1;31mAn error occurred while writing .gitignore: %s", err.Error())
+			os.Exit(1)
+		}
+		fmt.Println("\x1b[1;92m.gitignore successfully written")
 		fmt.Println()
 		fmt.Println("\x1b[1;92mGit repository bootstrapping complete")
 	},
